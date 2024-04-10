@@ -10,8 +10,27 @@ import { VerifyUserFormProvider } from "./RegisterForm.context";
 const RegisterForm: React.FC<IRegisterFormProps> = (props) => {
   const { initialValues = INITIAL_VALUES } = props;
 
-  const handleSubmit = useCallback((values: FormValues) => {
-    console.log("DEBUG", { values });
+  const handleSubmit = useCallback(async (values: FormValues) => {
+    try {
+      const apiUrl = `${process.env.REACT_APP_API_URL}/api/client/create`;
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      const data = await response.json();
+      console.log("Form submitted successfully:", data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   }, []);
 
   return (

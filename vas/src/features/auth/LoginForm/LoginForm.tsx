@@ -39,11 +39,17 @@ const LoginFormInner: React.FC = () => {
       <StyledForm>
         {loginWithOtp ? (
           <>
-            <p>Enter 6 Digit OTP</p>
+            <p className="text-[#344054] text-[20px] font-semibold">
+              Enter 6 Digit OTP
+            </p>
 
-            <div>
+            <div className="text-[#667085]">
               Code sent on +91 9041010719{" "}
-              <Button variant="ghost" onClick={toggleLoginWithOtp}>
+              <Button
+                variant="ghost"
+                className="text-[#344054]"
+                onClick={toggleLoginWithOtp}
+              >
                 Change Number
               </Button>
             </div>
@@ -57,15 +63,19 @@ const LoginFormInner: React.FC = () => {
               }}
             />
 
-            <div className="mt-4">Resend OTP in 0:50 Second</div>
+            <div className="mt-4 text-center">
+              Resend OTP in <span className="text-[#E11286]">0:50</span> Second
+            </div>
           </>
         ) : (
           <>
-            <h3>Login</h3>
+            <h3 className="text-[24px] font-normal font-semibold">Login</h3>
 
             <hr className="my-4" />
 
-            <label>Phone number</label>
+            <label className="font-[500] text-[15px] font-normal uppercase text-[#667085]">
+              Phone number
+            </label>
             <PhoneInput
               className="w-full mt-2"
               placeholder="Enter Mobile Number"
@@ -75,7 +85,9 @@ const LoginFormInner: React.FC = () => {
               }}
             />
 
-            <label className="mt-4">Password</label>
+            <label className="mt-4 font-[500] text-[15px] font-normal uppercase text-[#667085]">
+              Password
+            </label>
             <PasswordField
               className="w-full mt-2"
               placeholder="Enter Password"
@@ -113,9 +125,11 @@ const LoginFormInner: React.FC = () => {
           Login
         </Button>
 
-        <div className="mt-4">Or</div>
+        <div className="mt-4 text-center text-sm text-[#344054]">Or</div>
 
-        <div className="mt-4">Don't have Account?</div>
+        <div className="mt-4  text-center text-sm text-[#344054]">
+          Don't have Account?
+        </div>
 
         <Button
           className="w-full mt-4"
@@ -132,8 +146,27 @@ const LoginFormInner: React.FC = () => {
 const LoginForm: React.FC<ILoginFormProps> = (props) => {
   const { initialValues = INITIAL_VALUES } = props;
 
-  const handleSubmit = useCallback((values: FormValues) => {
-    console.log("DEBUG:LOGIN:SUBMIT", { values });
+  const handleSubmit = useCallback(async (values: FormValues) => {
+    try {
+      const apiUrl = `${process.env.REACT_APP_API_URL}/api/client/login/phoneAndPassword`;
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      const data = await response.json();
+      console.log("Form submitted successfully:", data);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   }, []);
 
   return (

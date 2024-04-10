@@ -10,9 +10,9 @@ const VerifyOtpStep: React.FC = () => {
 
   return (
     <>
-      <p>Enter 6 Digit OTP</p>
+      <p className="text-center text-[20px] font-semibold">Enter 6 Digit OTP</p>
 
-      <div>
+      <div className="text-center">
         Code sent on +91 9041010719{" "}
         <Button variant="ghost">Change Number</Button>
       </div>
@@ -26,7 +26,7 @@ const VerifyOtpStep: React.FC = () => {
         }}
       />
 
-      <div className="mt-4">Resend OTP in 0:50 Second</div>
+      <div className="mt-4 text-center">Resend OTP in <span className="text-[#E11286]">0:50</span> Second</div>
     </>
   );
 };

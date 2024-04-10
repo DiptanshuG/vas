@@ -15,10 +15,10 @@ const LoginPage = () => {
     <>
       <StyledContainer>
         <StyledContentSection>
-          <div>
-            <h2>AI Age Well Being</h2>
+          <div className="m-[3.5rem]">
+            <h2 className="font-bold my-4 text-3xl">AI Age Well Being</h2>
 
-            <p>
+            <p className="my-6">
               Parachute Design is a top web design agency hand-crafting
               beautiful website design and branding since 2003. ParacParachute
               Design is a top web design agency hand-crafting beautiful website
@@ -33,7 +33,7 @@ const LoginPage = () => {
               beautiful website design and branding since 2003.
             </p>
 
-            <p>
+            <p className="my-6">
               Parachute Design is a top web design agency hand-crafting
               beautiful website design and branding since 2003. ParacParachute
               Design is a top web design agency hand-crafting beautiful website

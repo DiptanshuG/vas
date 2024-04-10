@@ -19,6 +19,7 @@ export const StyledImage = styled.img`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-radius: 100rem;
 `;
 
 export const StyledTitle = styled.div`

@@ -39,7 +39,7 @@ const Login: React.FC = () => {
         </div>
 
         <h2 className="text-black text-2xl mb-6">Login</h2>
-        <label className="text-Grey-500 font-plus-jakarta-sans font-medium text-sm mb-1">
+        <label className="text-Grey-500 font-plus-jakarta-sans font-medium text-sm mb-1 uppercase">
           Phone Number
         </label>
         <div className="relative flex items-center mb-6">

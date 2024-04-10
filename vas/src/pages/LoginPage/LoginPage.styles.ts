@@ -40,4 +40,8 @@ export const StyledGradientHeading = styled.h2`
   background: var(--gradiant-primary);
   background-clip: text;
   color: transparent;
+  font-family: "Plus Jakarta Sans";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
 `;
