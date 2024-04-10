@@ -11,11 +11,15 @@ function App() {
   return (
     <div className="App h-screen flex flex-col">
       <Navbar />
+      <div className="flex-grow overflow-y-auto">
+
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />
         </Routes>
       </Router>
+      </div>
+
     </div>
   );
 }
